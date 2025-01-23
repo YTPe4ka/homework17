@@ -11,7 +11,6 @@ export const AuthProvider = ({ children, setIsAuthenticated }) => {
 const login = async (username, password) => {
     try {
       const response = await api.post('https://nt-shopping-list.onrender.com/api/auth', { username, password }); 
-    
       localStorage.setItem('token', response.data.token);
       setUser(response.data.user);
       setIsAuthenticated(true);

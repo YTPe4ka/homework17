@@ -8,10 +8,9 @@ const AppRoutes = ({ isAuthenticated }) => (
   <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/profile" element={<div>Profile Page</div>} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-    
+
   </Routes>
 );
 

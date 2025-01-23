@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 
   }
   .home{    
@@ -20,7 +21,7 @@
   }
   .navbar {
     width: 100%;
-    background-color: #0078d7;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
     color: white;
     padding: 10px 20px;
     display: flex;
@@ -48,6 +49,8 @@
   }
   
   .main-content {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+  
     padding: 20px;
     margin-top: 20px;
   }
@@ -74,4 +77,47 @@
     &:hover {
       background-color: #0177d1;
     }
+  }
+  .sidebar {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+
+    width: 250px;
+    color: white;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    margin: 15px 0;
+  }
+  
+  .sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  .sidebar ul li a:hover {
+    text-decoration: underline;
+  }
+  .layout {
+    display: flex;
+    height: calc(100vh - 50px); /* Navbar height */
+  }
+  .main-content {
+    flex: 1;
+    padding: 20px;
+    background: white;
+    overflow-y: auto;
+  }
+  h1 {
+    color: #333;
+  }
+  p {
+    color: #666;
   }
