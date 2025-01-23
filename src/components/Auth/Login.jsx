@@ -1,52 +1,101 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 import { AuthContext } from '../../context/AuthContext';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import './Login.css';
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const { login, user } = useContext(AuthContext);
+  const token = localStorage.getItem('token');
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    await login(username, password);
+  if (user && token) {
+    return <Navigate to="/home" />;
+  }
+
+  const initialValues = {
+    username: '',
+    password: '',
   };
-  
+
+  const validationSchema = Yup.object({
+    username: Yup.string()
+      .min(4, 'Username must be at least 4 characters')
+      .required('Username is required'),
+    password: Yup.string()
+      .min(6, 'Password must be at least 6 characters')
+      .required('Password is required'),
+  });
+
+  const handleLogin = async (values, { setSubmitting, setFieldError }) => {
+    try {
+      await login(values.username, values.password);
+    } catch (err) {
+      setFieldError('general', 'Invalid username or password');
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <div className="login-container">
       <div className="login-card">
         <h2 className="login-title">Welcome Back</h2>
-        <form onSubmit={handleLogin} className="login-form">
-          <div className="form-group">
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              id="username"
-              className="form-input"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              className="form-input"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <button type="submit" className="btn login-btn">
-          Login
-          </button>
-        </form>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleLogin}
+        >
+          {({ isSubmitting, errors }) => (
+            <Form className="login-form">
+              <div className="form-group">
+                <label htmlFor="username">Username</label>
+                <Field
+                  type="text"
+                  id="username"
+                  name="username"
+                  className="form-input"
+                />
+                <ErrorMessage
+                  name="username"
+                  component="div"
+                  className="form-error"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="password">Password</label>
+                <Field
+                  type="password"
+                  id="password"
+                  name="password"
+                  className="form-input"
+                />
+                <ErrorMessage
+                  name="password"
+                  component="div"
+                  className="form-error"
+                />
+              </div>
+              {errors.general && (
+                <div className="form-error general-error">
+                  {errors.general}
+                </div>
+              )}
+              <button
+                type="submit"
+                className="btn login-btn"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Logging in...' : 'Login'}
+              </button>
+            </Form>
+          )}
+        </Formik>
         <p className="register-prompt">
-          No account yet? <Link to="/register" className="register-link">Register here</Link>
+          No account yet?{' '}
+          <Link to="/register" className="register-link">
+            Register here
+          </Link>
         </p>
       </div>
     </div>
