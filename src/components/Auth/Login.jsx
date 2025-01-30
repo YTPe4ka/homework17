@@ -4,12 +4,11 @@ import * as Yup from 'yup';
 import { AuthContext } from '../../context/AuthContext';
 import { Link, Navigate } from 'react-router-dom';
 import './Login.css';
-
 const Login = () => {
   const { login, user } = useContext(AuthContext);
   const token = localStorage.getItem('token');
 
-  if (user && token) {
+  if (token) {
     return <Navigate to="/home" />;
   }
 
@@ -20,13 +19,13 @@ const Login = () => {
 
   const validationSchema = Yup.object({
     username: Yup.string()
-      .min(4, 'Username must be at least 4 characters')
-      .required('Username is required'),
+    .required('Username is required')
+    .min(6, 'Password must be at least 6 characters'),
     password: Yup.string()
-      .min(6, 'Password must be at least 6 characters')
-      .required('Password is required'),
+    .required('Password is required')
+    .min(6, 'Password must be at least 6 characters'),
   });
-
+  // iqbol0797 I030797
   const handleLogin = async (values, { setSubmitting, setFieldError }) => {
     try {
       await login(values.username, values.password);

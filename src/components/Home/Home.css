@@ -73,51 +73,5 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+  }
 
-    &:hover {
-      background-color: #0177d1;
-    }
-  }
-  .sidebar {
-    background: linear-gradient(to right, #6a11cb, #2575fc);
-
-    width: 250px;
-    color: white;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .sidebar ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .sidebar ul li {
-    margin: 15px 0;
-  }
-  
-  .sidebar ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-  }
-  
-  .sidebar ul li a:hover {
-    text-decoration: underline;
-  }
-  .layout {
-    display: flex;
-    height: calc(100vh - 50px); /* Navbar height */
-  }
-  .main-content {
-    flex: 1;
-    padding: 20px;
-    background: white;
-    overflow-y: auto;
-  }
-  h1 {
-    color: #333;
-  }
-  p {
-    color: #666;
-  }

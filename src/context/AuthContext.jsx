@@ -4,33 +4,36 @@ import api from '../services/api';
 
 export const AuthContext = createContext();
 
-export const AuthProvider = ({ children, setIsAuthenticated }) => {
+export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
 
-const login = async (username, password) => {
+  const login = async (username, password) => {
     try {
-      const response = await api.post('https://nt-shopping-list.onrender.com/api/auth', { username, password }); 
+      const response = await api.post(
+        'https://nt-shopping-list.onrender.com/api/auth',
+        { username, password }
+      );
       localStorage.setItem('token', response.data.token);
       setUser(response.data.user);
       setIsAuthenticated(true);
       navigate('/Home');
     } catch (error) {
       console.error('Login failed:', error);
-      setIsAuthenticated(false);
+      setIsAuthenticated(false); 
     }
   };
-  
 
   const logout = () => {
     localStorage.removeItem('token');
     setUser(null);
-    setIsAuthenticated(false);
+    setIsAuthenticated(false); 
     navigate('/login');
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, isAuthenticated, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
