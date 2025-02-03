@@ -7,9 +7,11 @@
     max-width: 600px;
     margin: 70px 20px;
     font-family: Arial, sans-serif;
+    padding:auto auto;
   }
   
   .GroupDetail h2 {
+    display: flex;
     font-size: 24px;
     color: #333;
     margin-bottom: 10px;
@@ -17,6 +19,7 @@
   }
   
   .GroupDetail h3 {
+    display: flex;
     font-size: 20px;
     color: #555;
     margin-top: 20px;
@@ -49,11 +52,94 @@
   }
   
   .Items{
+    min-width: 400px;
     display: flex;
     height: 100vh;
   }
 
   .Member{
+    min-width: 400px;
     display: flex;
     height: 100vh;
+  }
+
+  .btn1{
+    margin-left: 359px;
+    margin-right: 9px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 9px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+  }
+  
+  .btn1:hover{
+    background-color: #00e1ff;
+  }
+
+
+  .btn2{
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    padding: 5px 9px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+  }
+  
+  .btn2:hover{
+    background-color: #ff00d4;
+  }
+
+  
+
+
+
+  .btn2 {
+    background-color: red;
+    color: white;
+  }
+  
+  .btn2:hover {
+    background-color: darkred;
+  }
+
+  .input{
+    display: flex;
+    margin-left: 310px;
+    width: 30%;
+    height: 20px;
+    margin-top: 20px;
+    border-radius: 3px;
+    border: #007bff solid 1px;
+    outline: none;
+    font-size: 20px;
+  }
+
+
+
+  .ustoz{
+display: flex;
+/* sigma */
+  }
+
+  .btn3{
+    margin-top: 18px;
+    height: 25px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .owner{
+    margin-left: 50%;
   }

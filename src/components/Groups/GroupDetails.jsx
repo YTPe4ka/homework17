@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { ToastContainer, toast} from 'react-toastify';
 import axios from "axios";
 import "./Groups.css"
-
 const GroupDetails = () => {
   const { groupID } = useParams();
   const [group, setGroup] = useState(null);
   const [members, setMembers] = useState([]); 
-  const [isPending, setIsPending] = useState(false);
   const [items, setItems] = useState([]);
   const [inputValue, setInputValue] = useState("");
-   
-  
+  const [isPending, setIsPending] = useState("");
   
   
   
@@ -84,20 +82,21 @@ const GroupDetails = () => {
     setInputValue("");
     setIsPending(true);
     const title = e.target[0].value;
-    const groupID = groupID;
+    const groupId = groupID;
     const token = localStorage.getItem("token");
     try {
+      setIsPending(false);
       const response = await axios.post(
         "https://nt-shopping-list.onrender.com/api/items",
-        { title, groupID },
+        { title, groupId },
         {
           headers: {
             "x-auth-token": token,
             "Content-Type": "application/json",
           },
         }
+        
       );
-      console.log("iiiiiiiiiiiiiiiiiii", response);
       setItems((prevItems) => [...prevItems, response.data.item]);
       
     } catch (error) {
@@ -108,7 +107,7 @@ const GroupDetails = () => {
   };
   
   const delItem = async (id) => {
-    setIsPending(true);
+    setIsPending(id);
     try {
       const res = await axios.delete(
         `https://nt-shopping-list.onrender.com/api/items/${id}`,
@@ -122,10 +121,10 @@ const GroupDetails = () => {
       console.log("ddididididididi", res);
       if (res.status === 200) {
         setItems((prevItems) => prevItems.filter((val) => val._id !== id));
+        toast.success("Item deleted successfully");
       }
     } catch (error) {
       console.error(error);
-      console.log(res.data);
       
     } finally {
       setIsPending(false);
@@ -165,11 +164,19 @@ const GroupDetails = () => {
 <>
       <section className="Items">
         <div className="GroupDetail">
-      <h3>Items:</h3>
+        <h2>{group?.name}</h2>
+      <div className="ustoz">
+        
+      <h3>Items: <span>{items.length}</span></h3>
+      <form action="#" className="ustoz" onSubmit={createItem}>
+      <input type="text" className="input" /> <button className="btn3">+</button>
+      </form>
+      
+      </div>
       <ul>
-        {items.map((items) => (
+        {items?.map((items) => (
           <li key={items?._id}>
-            <span className="item-title">{items?.title}</span>
+            <span className="item-title">{items?.title}<button className="btn1">Buy</button><button className="btn2" onClick={() =>delItem(items?._id)}>{isPending === items._id ? "..." : "delete"}</button></span>
           </li>
         ))}
       </ul>
@@ -178,9 +185,9 @@ const GroupDetails = () => {
       <section className="Member">
         <div className="GroupDetail">
       <h2>{group?.name}</h2>
-      <h3>Members:</h3>
+      <h3>Members:<span>{members.length}</span> <p className="owner">owner:{group?.owner.username}</p></h3>
       <ul>
-        {members.map((member) => (
+        {members?.map((member) => (
           <li key={member._id}>{member.name}</li>
         ))}
       </ul>

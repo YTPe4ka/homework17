@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Home from './components/Home/Home';
 import GroupDetails from './components/Groups/GroupDetails';
 import Login from './components/Auth/Login';
@@ -17,6 +17,8 @@ const App = () => {
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
+          <Route path="*" element={<Navigate to="/login" />} />
+          
         </Routes>
       </AuthProvider>
     </Router>
