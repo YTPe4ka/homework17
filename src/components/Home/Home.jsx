@@ -17,7 +17,8 @@ const Home = () => {
   <div className="layout">
     <nav className="navbar">
 <div className="navbar-content">
-  <div className="logo">Logo</div>
+  <Link to="/home" className="logo">Logo</Link>
+              
   <input type="text" className="search-bar" placeholder="Search..." />
   <button
     className="logout-btn"
