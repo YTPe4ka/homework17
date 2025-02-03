@@ -169,7 +169,7 @@ const GroupDetails = () => {
         
       <h3>Items: <span>{items.length}</span></h3>
       <form action="#" className="ustoz" onSubmit={createItem}>
-      <input type="text" className="input" /> <button className="btn3">+</button>
+      <input type="text" className="input" placeholder="title"/> <button className="btn3">+</button>
       </form>
       
       </div>
@@ -184,11 +184,12 @@ const GroupDetails = () => {
       </section>
       <section className="Member">
         <div className="GroupDetail">
+          
       <h2>{group?.name}</h2>
       <h3>Members:<span>{members.length}</span> <p className="owner">owner:{group?.owner.username}</p></h3>
       <ul>
         {members?.map((member) => (
-          <li key={member._id}>{member.name}</li>
+          <li className="membersniggers" key={member._id}>{member.name} <button className="sbtn2">Delete</button></li>
         ))}
       </ul>
       </div>

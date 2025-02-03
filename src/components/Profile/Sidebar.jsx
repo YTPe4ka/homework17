@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast} from 'react-toastify';
 import axios from 'axios';
 import "./Sidebar.css"
 function Sidebar() {
   const [groups, setGroups] = useState([]); 
   const [isLoading, setIsLoading] = useState(true); 
+  const [Create , setCreate] = useState(false);
 
   useEffect(() => {
     const fetchGroups = async () => {
@@ -34,9 +36,50 @@ function Sidebar() {
     fetchGroups();
   }, []); 
 
+  const onCreateGroup = async (e) => {
+    e.preventDefault();
+    let response = await axios.post('https://nt-shopping-list.onrender.com/api/groups',{
+      name: e.target[0].value,
+      password: e.target[1].value,
+    },{
+      headers: {
+        'x-auth-token': localStorage.getItem('token'),
+      },
+    });
+
+    if(response.status === 201){
+      alert("Group created successfully");
+      setCreate(!Create);
+    }else{
+      alert('Failed to create group');
+    }
+  }
+  
   return (
     <aside className="sidebar">
-      <ul>
+      <button className="bta" onClick={() => {
+        setCreate(!Create);
+      }}>{Create ? "Cancel" : "Create" }</button>
+
+      {
+        Create? 
+        
+        <form action="" onSubmit={onCreateGroup}>
+          <input type="text" placeholder='Name'  className='odnoitojeo' />
+          <input type="password" placeholder='Password' className='odnoitojeo'/>
+          <div>
+          <button type='submit' className='oncl'>create</button>
+          <button onClick={()=>{setCreate(!Create)}} className='oncl'>Cancel</button>
+          </div>        
+        </form>
+        
+        
+        : ""
+      }
+
+
+      
+      <ul className='groups'>
         {isLoading ? (
           <li>Loading groups...</li>
         ) : (

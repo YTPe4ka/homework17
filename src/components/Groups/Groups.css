@@ -143,3 +143,25 @@ display: flex;
   .owner{
     margin-left: 50%;
   }
+
+  .membersniggers{
+    display: flex;
+    margin-right: 40px;
+  }
+
+
+
+  .sbtn2{
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    padding: 5px 9px;
+    margin-left: 340px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn2:hover{
+    background-color: #ff00d4;
+  }
