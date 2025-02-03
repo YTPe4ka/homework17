@@ -43,7 +43,7 @@ function Sidebar() {
           groups.length > 0 ? (
             groups.map((group) => (
               <li key={group._id}>
-                <Link to={`/home/group/${group._id}`}>{group.name}</Link>
+                <Link to={`/home/group/${group?._id}`}>{group.name}</Link>
               </li>
             ))
           ) : (

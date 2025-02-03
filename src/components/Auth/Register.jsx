@@ -25,10 +25,13 @@ const Registration = () => {
       .required('Password is required')
       .min(6, 'Password must be at least 6 characters'),
   });
-
   const handleRegistration = async (values, { setSubmitting, setFieldError, resetForm }) => {
     try {
-      const response = await api.post(' ', values);
+      const response = await api.post('https://nt-shopping-list.onrender.com/api/users', {
+        name: values.name,
+        username: values.username,
+        password: values.password
+      });
       alert('Registration successful! Logging you in...');
       await login(values.username, values.password);
       resetForm();

@@ -49,6 +49,7 @@
   }
   
   .main-content {
+    display: flex;
     background: linear-gradient(to right, #6a11cb, #2575fc);
   
     padding: 20px;
@@ -75,3 +76,6 @@
     transition: background-color 0.3s ease;
   }
 
+.Common-Classes{
+  display: flex;
+}

@@ -11,9 +11,9 @@ const App = () => {
     <Router>
       <AuthProvider>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />}>
-            <Route path="/home/group/:groupId" element={<GroupDetails />} />
+          <Route path="home" element={<Home />} />
+          <Route path="/" element={<Home />}>
+            <Route path="/home/group/:groupID" element={<GroupDetails />} />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
@@ -24,6 +24,7 @@ const App = () => {
 };
 
 export default App;
+
 
 //he he :> 
 // iqbol0797 I030797

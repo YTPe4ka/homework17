@@ -1,3 +1,59 @@
-.GroupDetail{
-    display: flex  ;
-}
+  .GroupDetail {
+    width: 900px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    margin: 70px 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .GroupDetail h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .GroupDetail h3 {
+    font-size: 20px;
+    color: #555;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .GroupDetail ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .GroupDetail li {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .GroupDetail li:last-child {
+    margin-bottom: 0;
+  }
+  
+  .GroupDetail .item-title {
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  .Items{
+    display: flex;
+    height: 100vh;
+  }
+
+  .Member{
+    display: flex;
+    height: 100vh;
+  }

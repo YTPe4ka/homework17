@@ -30,10 +30,10 @@ const Home = () => {
     </button>
     </div>
     </nav>
+        <div className='Common-Classes'>
       <Sidebar />
-      <main className="main-content">
-        <Outlet />
-      </main>
+         <Outlet />
+      </div>
     </div>
   );
 };
