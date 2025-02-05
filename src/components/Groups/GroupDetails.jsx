@@ -231,7 +231,7 @@ const GroupDetails = () => {
           <h3>
             Members:<span>{members.length}</span>{' '}
             <p className="owner">owner:{group?.owner.username} <Link to="/home">
-            <button onClick={() => delgroup() }>  Delete Group</button>
+            <button className='btn2' onClick={() => delgroup() }>  Delete Group</button>
           </Link></p>
           </h3>
           <ul>
