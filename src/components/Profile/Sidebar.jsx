@@ -49,9 +49,13 @@ function Sidebar() {
 
     if(response.status === 201){
       alert("Group created successfully");
-      setCreate(!Create);
-    }else{
+      setCreate(!Create)
+      window.location.reload();
+    }else if(response.status === 500 || response.status === 404 || response.status === 400){ 
       alert('Failed to create group');
+    }
+    else{
+      toast.error('Failed to create group');
     }
   }
   
@@ -72,8 +76,6 @@ function Sidebar() {
           <button onClick={()=>{setCreate(!Create)}} className='oncl'>Cancel</button>
           </div>        
         </form>
-        
-        
         : ""
       }
 

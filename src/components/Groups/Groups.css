@@ -27,9 +27,12 @@
   }
   
   .GroupDetail ul {
+    display: flex;
+    flex-direction: column;
     list-style: none;
     padding: 0;
     margin: 0;
+    justify-content: space-between;
   }
   
   .GroupDetail li {
@@ -61,10 +64,10 @@
     min-width: 400px;
     display: flex;
     height: 100vh;
+    justify-items: space-between;
   }
 
   .btn1{
-    margin-left: 359px;
     margin-right: 9px;
     background-color: #007bff;
     color: white;
@@ -146,6 +149,7 @@ display: flex;
 
   .membersniggers{
     display: flex;
+    justify-content: space-between;
     margin-right: 40px;
   }
 
@@ -156,7 +160,6 @@ display: flex;
     color: white;
     border: none;
     padding: 5px 9px;
-    margin-left: 340px;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -164,4 +167,11 @@ display: flex;
   
   .btn2:hover{
     background-color: #ff00d4;
+  }
+
+
+  .item-title{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 40px;
   }

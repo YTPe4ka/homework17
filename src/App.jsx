@@ -5,6 +5,7 @@ import GroupDetails from './components/Groups/GroupDetails';
 import Login from './components/Auth/Login';
 import Registration from './components/Auth/Register.jsx';
 import { AuthProvider } from './context/AuthContext';
+import Profile from './components/Home/Profile.jsx';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           <Route path="home" element={<Home />} />
           <Route path="/" element={<Home />}>
             <Route path="/home/group/:groupID" element={<GroupDetails />} />
+            <Route path="/home" element={<Profile/>} />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
